@@ -19,7 +19,7 @@ require("./passport");
 
 const dev = process.env.NODE_ENV !== "production";
 const port = process.env.PORT || 3000;
-const ROOT_URL = dev ? `http://localhost:${port}` : process.env.PRODUCTION_URL;
+// const ROOT_URL = dev ? `http://localhost:${port}` : process.env.PRODUCTION_URL;
 const app = next({ dev });
 const handle = app.getRequestHandler();
 
@@ -30,10 +30,7 @@ const mongooseOptions = {
 };
 
 mongoose
-  .connect(
-    process.env.MONGO_URI,
-    mongooseOptions
-  )
+  .connect(process.env.MONGO_URI, mongooseOptions)
   .then(() => console.log("DB connected"));
 
 mongoose.connection.on("error", err => {
@@ -134,6 +131,6 @@ app.prepare().then(() => {
 
   server.listen(port, err => {
     if (err) throw err;
-    console.log(`Server listening on ${ROOT_URL}`);
+    console.log(`Server listening on ${port}`);
   });
 });
