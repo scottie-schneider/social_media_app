@@ -26,7 +26,7 @@ const Navbar = ({ classes, router, pageProps: { auth } }) => {
           component="h1"
           className={classes.toolbarTitle}
         >
-          <ActiveLink href="/">NextConnect</ActiveLink>
+          <ActiveLink href="/">DevConnect</ActiveLink>
         </Typography>
 
         {user._id ? (
