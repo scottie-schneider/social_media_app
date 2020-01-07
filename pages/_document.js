@@ -77,7 +77,7 @@ class MyDocument extends Document {
           />
           <meta
             name="description"
-            content="A social media site built with Next.js"
+            content="A social media site built with Next.js for Devs, and Designers."
           />
         </Head>
         <body>
