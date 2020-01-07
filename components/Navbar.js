@@ -5,48 +5,54 @@ import Button from "@material-ui/core/Button";
 import ShareOutlined from "@material-ui/icons/ShareOutlined";
 import withStyles from "@material-ui/core/styles/withStyles";
 
-import ActiveLink from './ActiveLink';
+import ActiveLink from "./ActiveLink";
+import { signoutUser } from "../lib/auth";
 
 const Navbar = ({ classes, router, pageProps: { auth } }) => {
   const { user = {} } = auth || {};
+
   return (
-    <AppBar className={classes.appBar} position={router.pathname === '/' ? "fixed" : "static"}>
+    <AppBar
+      className={classes.appBar}
+      position={router.pathname === "/" ? "fixed" : "static"}
+    >
       <Toolbar>
         {/* Main Title / Home Button */}
-        <ActiveLink href="/"><ShareOutlined className={classes.icon} /></ActiveLink>
-        <Typography variant="h5" component="h1" className={classes.toolbarTitle}>
-          <ActiveLink href='/'>
-            Next Connect
-          </ActiveLink>        
+        <ActiveLink href="/">
+          <ShareOutlined className={classes.icon} />
+        </ActiveLink>
+        <Typography
+          variant="h5"
+          component="h1"
+          className={classes.toolbarTitle}
+        >
+          <ActiveLink href="/">NextConnect</ActiveLink>
         </Typography>
+
         {user._id ? (
-          //auth nav
+          // Auth Navigation
           <div>
             <Button>
-              <ActiveLink href="/profile">
-                Profile
-                </ActiveLink>
-              </Button>
-            <Button>Sign out</Button>
+              <ActiveLink href={`/profile/${user._id}`}>Profile</ActiveLink>
+            </Button>
+            <Button onClick={signoutUser} variant="outlined">
+              Sign out
+            </Button>
           </div>
-        ) :
-        (
+        ) : (
+          // UnAuth Navigation
           <div>
             <Button>
-              <ActiveLink href="/signin">
-              Sign in
-              </ActiveLink>
+              <ActiveLink href="/signin">Sign in</ActiveLink>
             </Button>
             <Button>
-              <ActiveLink href="/signup">
-                Sign up
-              </ActiveLink>
+              <ActiveLink href="/signup">Sign up</ActiveLink>
             </Button>
           </div>
         )}
       </Toolbar>
     </AppBar>
-  )
+  );
 };
 
 const styles = theme => ({
