@@ -55,7 +55,7 @@ const Index = ({ classes, auth }) => (
           color="textSecondary"
           component="p"
         >
-          Hello! I'm <a target="_blank" href="https://www.scottieschneier.com">Scottie Schneider</a>.
+          Hello! I'm <a target="_blank" href="https://www.scottieschneider.com">Scottie Schneider</a>.
           This site is built on NextJS with material design, React, and connected to a MongoDB database.
           <br></br>
           The code for this site was largely influenced by the great course produced by <a target="_blank" href="https://www.udemy.com/user/reed-barger/">Reed Barker</a>. I highly recommend his courses!
